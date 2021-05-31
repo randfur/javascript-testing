@@ -3,7 +3,7 @@
 ## Example usage
 
 ```js
-import { runTests, TestSuite } from 'https://randfur.github.io/typescript-testing/testing';
+import { runTests, TestSuite } from 'https://randfur.github.io/javascript-testing/testing';
 
 runTests([
   class Dog extends TestSuite {
