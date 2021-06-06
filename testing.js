@@ -4,23 +4,39 @@ export class TestSuite {
   }
 
   tearDown() {}
-    
+  
+  addError(error) {
+    // Set a breakpoint here in your debugger to debug test failures.
+    this.errors.push(error);
+  }
+  
   assertEqual(x, y) {
     if (x !== y) {
-      this.errors.push(Error(`Expected "${x}" to equal "${y}"`));
+      this.addError(Error(`Expected "${x}" to equal "${y}"`));
+      return false;
     }
+    return true;
   }
   
   assertTrue(x) {
     if (!x) {
-      this.errors.push(Error(`Expected "${x}" to be truthy`));
+      this.addError(Error(`Expected "${x}" to be truthy`));
+      return false;
     }
+    return true;
   }
   
   assertLambda(f) {
     if (!f()) {
-      this.errors.push(Error(`Expected "${f}" to evaluate truthy`));
+      this.addError(Error(`Expected "${f}" to evaluate truthy`));
+      return false;
     }
+    return true;
+  }
+  
+  fail(message) {
+    this.addError(Error(message));
+    return false;
   }
 }
 
